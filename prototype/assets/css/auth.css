@@ -1,0 +1,207 @@
+/* ==========================================================================
+   登录 / 注册 / 团体层
+   ========================================================================== */
+
+.auth {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* ---- 左：品牌 ----------------------------------------------------------- */
+.auth-left {
+  background: var(--ink);
+  color: #e8ebe6;
+  padding: 56px 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth-brand { display: flex; gap: 14px; align-items: center; }
+
+.auth-brand .mark {
+  width: 40px; height: 40px; flex: none;
+  border: 1.2px solid rgba(255, 255, 255, .55);
+  border-radius: var(--r);
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-size: 22px; line-height: 1; letter-spacing: -.04em;
+  padding-bottom: 2px;
+}
+
+.auth-brand-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-display);
+  letter-spacing: .02em;
+  color: #fff;
+}
+.auth-brand-sub {
+  font-size: var(--fs-11);
+  color: rgba(255, 255, 255, .5);
+  letter-spacing: .1em;
+  margin-top: 3px;
+}
+
+.auth-lede {
+  font-size: var(--fs-14);
+  line-height: 2;
+  color: rgba(255, 255, 255, .62);
+  max-width: 26em;
+}
+
+/* ---- 右：卡片 ----------------------------------------------------------- */
+.auth-right {
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  padding: 48px 32px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 28px 28px 24px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 24px;
+}
+.auth-tabs button {
+  padding: 0 0 12px;
+  font-size: var(--fs-13);
+  color: var(--ink-3);
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -1px;
+  transition: color .14s var(--ease), border-color .14s var(--ease);
+}
+.auth-tabs button:hover { color: var(--ink-2); }
+.auth-tabs button.is-on { color: var(--ink); border-bottom-color: var(--ink); }
+
+.auth-demo { display: flex; flex-direction: column; }
+
+.demo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--r);
+  text-align: left;
+  transition: background .12s var(--ease);
+}
+.demo-row:hover { background: var(--paper-tint); }
+
+/* ==========================================================================
+   团体层
+   ========================================================================== */
+.team-layer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 32px 64px;
+  width: 100%;
+}
+
+.team-layer-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 40px;
+}
+.team-layer-head .auth-brand .mark { border-color: var(--ink); color: var(--ink); }
+.team-layer-head .auth-brand-name { color: var(--ink); }
+.team-layer-head .auth-brand-sub { color: var(--ink-3); }
+
+.team-empty {
+  padding: 48px 0 40px;
+  text-align: center;
+}
+.team-empty-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-19);
+  font-weight: var(--fw-display);
+  letter-spacing: .01em;
+  margin-bottom: 10px;
+}
+.team-empty-desc { font-size: var(--fs-13); color: var(--ink-3); }
+
+.team-list { display: flex; flex-direction: column; gap: 8px; }
+
+.team-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  background: var(--paper-raised);
+  text-align: left;
+  transition: border-color .14s var(--ease);
+}
+.team-row:hover { border-color: var(--ink-3); }
+.team-row-main { flex: 1; min-width: 0; }
+.team-row-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-display);
+  letter-spacing: .01em;
+  margin-bottom: 5px;
+}
+.team-row-meta { display: flex; align-items: center; gap: 8px; }
+.team-row-roles { display: flex; gap: 5px; flex: none; }
+.team-row .ico { color: var(--ink-4); flex: none; }
+
+.dot-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-5); }
+
+.team-actions { display: flex; gap: 12px; margin-top: 20px; }
+
+.team-action {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--r);
+  text-align: left;
+  transition: border-color .14s var(--ease), background .14s var(--ease);
+}
+.team-action:hover { border-color: var(--ink-3); background: var(--paper-raised); }
+.team-action-ico {
+  width: 32px; height: 32px; flex: none;
+  display: grid; place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  color: var(--ink-2);
+}
+
+.invite-code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-14);
+  letter-spacing: .12em;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  background: var(--paper-tint);
+}
+
+/* ---- 窄屏 --------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .auth { grid-template-columns: 1fr; min-height: 0; }
+  .auth-left { padding: 32px 24px; gap: 32px; }
+  .auth-lede { display: none; }
+  .auth-right { padding: 32px 20px 56px; place-items: start center; }
+  .team-actions { flex-direction: column; }
+}

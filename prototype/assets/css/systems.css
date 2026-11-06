@@ -1,0 +1,117 @@
+/* ==========================================================================
+   双系统版新增样式
+   ========================================================================== */
+
+/* ---- 分栏内容区 --------------------------------------------------------- */
+.pane-body--flush { padding: 0; }
+
+/* ---- 角色标签：可点击切换 ----------------------------------------------- */
+.role-chip--admin { color: var(--t-gm); border-color: #ad9cc2; background: var(--t-gm-wash); }
+
+button.role-chip { transition: opacity .12s var(--ease); }
+button.role-chip:hover { opacity: .82; }
+.role-chip--off {
+  opacity: .34;
+  border-style: dashed;
+  background: transparent;
+  color: var(--ink-3);
+}
+
+/* ---- 状态标签 ----------------------------------------------------------- */
+.tag--unlabeled {
+  border-style: dashed;
+  color: var(--seal);
+  border-color: var(--seal-rule);
+}
+
+/* ---- 工作台任务条 ------------------------------------------------------- */
+.wb-task-title {
+  font-size: var(--fs-13);
+  color: var(--ink-2);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 320px;
+}
+
+/* ---- 小尺寸输入 --------------------------------------------------------- */
+.input--sm { padding: 4px 8px; font-size: var(--fs-12); }
+.select--sm { padding: 4px 8px; font-size: var(--fs-12); }
+
+/* ==========================================================================
+   任务分配表
+   ========================================================================== */
+.assign-list {
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.assign-row {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) 2.4fr;
+  gap: 18px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+}
+.assign-row:last-child { border-bottom: 0; }
+.assign-row.is-on { background: var(--paper-tint); }
+
+.assign-doc { display: flex; align-items: center; gap: 10px; min-width: 0; }
+
+.assign-cells { display: flex; flex-direction: column; gap: 8px; }
+.assign-cell {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.assign-label {
+  font-size: var(--fs-11);
+  color: var(--ink-4);
+  letter-spacing: .06em;
+}
+
+.chip-picker { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.chip-mini {
+  font-size: var(--fs-11);
+  padding: 2px 9px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r);
+  color: var(--ink-3);
+  background: var(--paper-raised);
+  transition: background .12s var(--ease), border-color .12s var(--ease), color .12s var(--ease);
+}
+.chip-mini:hover { border-color: var(--ink-3); }
+.chip-mini.is-on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+/* ---- 任务详情 ----------------------------------------------------------- */
+.detail-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.detail-item:last-child { border-bottom: 0; }
+
+/* ==========================================================================
+   进度行
+   ========================================================================== */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.progress-row:last-child { border-bottom: 0; }
+.progress-row .progress { margin-top: 0; }
+
+@media (max-width: 720px) {
+  .assign-row { grid-template-columns: 1fr; }
+}

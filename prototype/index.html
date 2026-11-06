@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>裁判文书论证结构标记系统</title>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/entry.css">
+</head>
+<body>
+
+<div class="entry">
+
+  <header class="entry-head">
+    <div class="entry-brand">
+      <div class="mark">论</div>
+      <div>
+        <h1>裁判文书论证结构标记系统</h1>
+        <p>对裁判文书的裁判理由部分作论证结构的结构化标注与图示</p>
+      </div>
+    </div>
+    <div class="entry-fig" id="entry-fig"></div>
+  </header>
+
+  <main class="entry-cards">
+
+    <a class="ecard ecard--ink" href="labeling.html">
+      <div class="ecard-top">
+        <span class="ecard-no">01</span>
+        <span class="ecard-kind">正式标注生产</span>
+      </div>
+      <h2>标注系统</h2>
+      <p class="ecard-desc">团体协作，管理员分配任务，多人独立标注后由裁定者比对定稿。</p>
+      <ul class="ecard-list">
+        <li>团体与身份</li>
+        <li>任务分配</li>
+        <li>标注工作台</li>
+        <li>裁定与导出</li>
+      </ul>
+      <span class="ecard-go">进入</span>
+    </a>
+
+    <a class="ecard" href="teaching.html">
+      <div class="ecard-top">
+        <span class="ecard-no">02</span>
+        <span class="ecard-kind">学生练习平台</span>
+      </div>
+      <h2>教学系统</h2>
+      <p class="ecard-desc">教师发布练习，学生在同一套工作台上标注，提交后与标准答案比对。</p>
+      <ul class="ecard-list">
+        <li>班级与练习</li>
+        <li>标准答案</li>
+        <li>标注练习</li>
+        <li>相似率统计</li>
+      </ul>
+      <span class="ecard-go">进入</span>
+    </a>
+
+  </main>
+
+</div>
+
+<script src="assets/js/core/data.js"></script>
+<script src="assets/js/core/formal.js"></script>
+<script src="assets/js/core/graph.js"></script>
+<script src="assets/js/core/diagram.js"></script>
+<script src="assets/js/core/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* 页首图示：指南 §7 文书一 R1–R3 的真实结构，尺寸即实际渲染尺寸 */
+  var elements = [
+    { seq: 'P4', code: 'SM' }, { seq: 'P5', code: 'SF' },
+    { seq: 'P2', code: 'GM' }, { seq: 'P6', code: 'SM' }
+  ];
+  var relations = [
+    { id: 'R1', tree: { t: 'J', c: [{ p: 'P4' }, { p: 'P5' }] } },
+    { id: 'R2', tree: { t: 'M', c: [{ t: 'J', c: [{ p: 'P4' }, { p: 'P5' }] }, { p: 'P2' }] } },
+    { id: 'R3', tree: { t: 'S', c: [{ t: 'M', c: [{ t: 'J', c: [{ p: 'P4' }, { p: 'P5' }] }, { p: 'P2' }] }, { p: 'P6' }] } }
+  ];
+  var lay = Graph.layout(elements, relations, { gapY: 40, propW: 46, propH: 26, relR: 7, padX: 8, padY: 8 });
+  var out = Diagram.render(lay, {});
+  document.getElementById('entry-fig').appendChild(out.svg);
+})();
+</script>
+</body>
+</html>

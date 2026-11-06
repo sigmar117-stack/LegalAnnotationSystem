@@ -1,0 +1,188 @@
+/* ==========================================================================
+   入口页：两张卡，选择进入哪个系统
+   ========================================================================== */
+
+.entry {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 64px 64px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ---- 页首 --------------------------------------------------------------- */
+.entry-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 48px;
+}
+
+.entry-brand {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-brand .mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: 1.2px solid var(--ink);
+  border-radius: var(--r);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -.04em;
+  padding-bottom: 2px;
+}
+
+.entry-brand h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-29);
+  font-weight: var(--fw-display);
+  letter-spacing: .01em;
+  margin-bottom: 8px;
+}
+
+.entry-brand p {
+  font-size: var(--fs-13);
+  color: var(--ink-3);
+  letter-spacing: .01em;
+}
+
+.entry-fig {
+  flex: none;
+  opacity: .82;
+}
+
+/* ---- 两张卡 ------------------------------------------------------------- */
+.entry-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  flex: 1;
+  align-items: stretch;
+}
+
+.ecard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 36px 32px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  background: var(--paper-raised);
+  color: var(--ink);
+  transition: border-color .16s var(--ease), transform .16s var(--ease);
+}
+
+.ecard:hover { border-color: var(--ink-3); transform: translateY(-2px); }
+
+.ecard--ink {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #eceee9;
+}
+.ecard--ink:hover { border-color: var(--ink); }
+
+.ecard-top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.ecard-no {
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  letter-spacing: .1em;
+  color: var(--ink-4);
+}
+.ecard--ink .ecard-no { color: rgba(255, 255, 255, .42); }
+
+.ecard-kind {
+  font-size: var(--fs-11);
+  letter-spacing: .18em;
+  color: var(--ink-3);
+}
+.ecard--ink .ecard-kind { color: rgba(255, 255, 255, .58); }
+
+.ecard h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-36);
+  font-weight: var(--fw-display);
+  letter-spacing: .02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.ecard-desc {
+  font-size: var(--fs-13);
+  line-height: 1.85;
+  color: var(--ink-3);
+  max-width: 30em;
+}
+.ecard--ink .ecard-desc { color: rgba(255, 255, 255, .62); }
+
+.ecard-list {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: var(--fs-12);
+  color: var(--ink-2);
+}
+.ecard--ink .ecard-list {
+  border-top-color: rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .74);
+}
+
+.ecard-list li { position: relative; padding-left: 12px; }
+.ecard-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .62em;
+  width: 4px;
+  height: 1px;
+  background: currentColor;
+  opacity: .5;
+}
+
+.ecard-go {
+  margin-top: auto;
+  padding-top: 32px;
+  font-size: var(--fs-13);
+  letter-spacing: .1em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ecard-go::after {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  transition: width .16s var(--ease);
+}
+.ecard:hover .ecard-go::after { width: 30px; }
+
+/* ---- 窄屏 --------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .entry { padding: 32px 20px 40px; }
+  .entry-head { flex-direction: column; gap: 24px; margin-bottom: 32px; }
+  .entry-fig { display: none; }
+  .entry-cards { grid-template-columns: 1fr; }
+  .ecard { padding: 28px 24px 24px; }
+  .ecard h2 { font-size: var(--fs-29); }
+}

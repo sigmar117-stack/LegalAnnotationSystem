@@ -1,0 +1,304 @@
+/* ==========================================================================
+   应用外壳：墨色导航栏 + 纸色工作区
+   ========================================================================== */
+
+.app {
+  display: grid;
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   左侧导航
+   ========================================================================== */
+.rail {
+  background: var(--ink);
+  color: #e6e9e4;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+}
+
+.rail-brand {
+  padding: var(--s4) var(--s4) var(--s3);
+  border-bottom: 1px solid rgba(255, 255, 255, .09);
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+}
+
+.rail-mark {
+  width: 34px; height: 34px;
+  flex: none;
+  border: 1.2px solid rgba(255, 255, 255, .55);
+  border-radius: var(--r);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: -.04em;
+  padding-bottom: 1px;
+}
+
+.rail-name {
+  font-family: var(--font-display);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-display);
+  letter-spacing: .02em;
+  line-height: 1.35;
+}
+.rail-sub {
+  font-size: var(--fs-11);
+  color: rgba(255, 255, 255, .45);
+  letter-spacing: .04em;
+  margin-top: 3px;
+  font-family: var(--font-mono);
+}
+
+/* 团体切换：常驻在导航之上 */
+.rail-team {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  width: 100%;
+  padding: 12px var(--s4);
+  text-align: left;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, .09);
+  transition: background .14s var(--ease);
+}
+.rail-team:hover { background: rgba(255, 255, 255, .06); }
+.rail-team-name {
+  font-size: var(--fs-13);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rail-team-sub {
+  font-size: var(--fs-11);
+  color: rgba(255, 255, 255, .45);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rail-team .ico { color: rgba(255, 255, 255, .45); flex: none; }
+
+.rail-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--s4) var(--s2) var(--s5);
+  min-height: 0;
+}
+
+.rail-group { margin-bottom: var(--s4); }
+
+.rail-group-label {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: 0 var(--s3) var(--s2);
+  font-size: var(--fs-11);
+  color: rgba(255, 255, 255, .40);
+  letter-spacing: .1em;
+}
+.rail-group-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, .12);
+}
+
+/* 阶段序号：这里的编号是真实的流程顺序，不是装饰 */
+.rail-step {
+  font-family: var(--font-mono);
+  font-size: var(--fs-11);
+  color: rgba(255, 255, 255, .55);
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: var(--r);
+  padding: 0 3px;
+  line-height: 14px;
+}
+.rail-step.is-locked { color: rgba(255, 255, 255, .25); border-color: rgba(255, 255, 255, .12); }
+
+.rail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: 7px var(--s3);
+  border-radius: var(--r);
+  font-size: var(--fs-13);
+  color: rgba(255, 255, 255, .74);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background .14s var(--ease), color .14s var(--ease);
+}
+.rail-item:hover { background: rgba(255, 255, 255, .07); color: #fff; }
+.rail-item.is-active {
+  background: rgba(255, 255, 255, .11);
+  color: #fff;
+  box-shadow: inset 2px 0 0 var(--seal);
+}
+.rail-item .ico { flex: none; opacity: .8; }
+.rail-item.is-active .ico { opacity: 1; }
+
+.rail-foot {
+  border-top: 1px solid rgba(255, 255, 255, .09);
+  padding: var(--s3) var(--s4);
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.avatar {
+  width: 30px; height: 30px; flex: none;
+  border-radius: var(--r);
+  display: grid; place-items: center;
+  font-size: var(--fs-12);
+  font-family: var(--font-display);
+  background: rgba(255, 255, 255, .13);
+  color: #fff;
+  letter-spacing: .02em;
+}
+.avatar--sm { width: 24px; height: 24px; font-size: var(--fs-11); }
+.avatar--light { background: var(--paper-sunken); color: var(--ink-2); border: 1px solid var(--rule); }
+
+/* ==========================================================================
+   主区
+   ========================================================================== */
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--paper);
+}
+
+.topbar {
+  height: var(--topbar-h);
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  padding: 0 var(--s5);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-raised);
+}
+
+.topbar-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-19);
+  font-weight: var(--fw-display);
+  letter-spacing: .01em;
+}
+.topbar-sub {
+  font-size: var(--fs-12);
+  color: var(--ink-3);
+  padding-left: var(--s4);
+  margin-left: var(--s1);
+  border-left: 1px solid var(--rule);
+  line-height: 1.3;
+}
+.topbar-spacer { flex: 1; }
+
+.view {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  position: relative;
+}
+.view--flush { overflow: hidden; }
+
+.page {
+  padding: var(--s5) var(--s5) var(--s7);
+  max-width: 1360px;
+}
+.page--wide { max-width: none; }
+
+/* 面包屑：体现「四个阶段顺序不可逆」的实际位置 */
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: var(--fs-12);
+  color: var(--ink-3);
+  margin-bottom: var(--s4);
+}
+.crumbs b { font-weight: 600; color: var(--ink-2); }
+.crumb-sep { color: var(--ink-5); font-family: var(--font-mono); }
+.crumb-seal { color: var(--seal); font-weight: 600; }
+
+/* ==========================================================================
+   分栏（标注工作台）
+   ========================================================================== */
+.split {
+  display: grid;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--rule);
+  gap: 0;
+}
+/* 三栏 + 两条 1px 分隔条，共五列 */
+.split--3 {
+  grid-template-columns:
+    var(--col-a, 34fr) 1px
+    var(--col-b, 30fr) 1px
+    var(--col-c, 36fr);
+}
+
+.pane {
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pane-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-raised);
+  min-height: 42px;
+}
+.pane-title {
+  font-size: var(--fs-13);
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: var(--ink-2);
+  white-space: nowrap;
+  flex: none;
+}
+.pane-note { font-size: var(--fs-11); color: var(--ink-4); white-space: nowrap; }
+.pane-head > .spacer { min-width: var(--s2); }
+.pane-body { flex: 1; overflow: auto; min-height: 0; }
+.pane-foot {
+  flex: none;
+  border-top: 1px solid var(--rule);
+  background: var(--paper-raised);
+  padding: var(--s3) var(--s4);
+}
+
+/* 可拖拽分隔条 */
+.gutter {
+  position: relative;
+  cursor: col-resize;
+  background: var(--rule);
+  width: 1px;
+}
+.gutter::after {
+  content: '';
+  position: absolute;
+  inset: 0 -4px;
+}
+.gutter:hover, .gutter.is-dragging { background: var(--ink-3); }
